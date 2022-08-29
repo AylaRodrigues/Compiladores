@@ -1,7 +1,7 @@
 # Compiladores
 ><h3>Dupla: Ayla Rodrigues e Sofia Kitaeva</h3>
 
-* [Analisador Léxico]()
+* [Analisador Léxico](https://github.com/AylaRodrigues/Compiladores/tree/main/Analisador%20L%C3%A9xico)
 * [Analisador Sintático]()
 * [Analisador Semântico]()
 
