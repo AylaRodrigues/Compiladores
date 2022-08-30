@@ -11,7 +11,6 @@
 * [Analisador Semântico]()
 
 <div style="display: inline_block"><br>
-     <img align="left" src="https://img.shields.io/badge/Lexer-in_build-4682B4?style=for-the-badge&logo=github&logoColor=white">
-     <img align="center" src="https://img.shields.io/badge/main-in_build-4682B4?style=for-the-badge&logo=github&logoColor=white">
+     <img align="left" src="https://img.shields.io/badge/Lexer-working-green?style=for-the-badge&logo=github&logoColor=white">
 </div>
 
