@@ -80,7 +80,6 @@ def t_num(t):
 def t_comentario_linha(t):
     r'[--]+([a-zA-Z0-9_]*)'
     if t.lexer : '\n'
-    t.lexer.skip(1)
     pass
 
 # numero de linhas
