@@ -44,8 +44,6 @@ tokens = [
              'virgula',
              'comentario_linha',
              'comentario_bloco',
-             'abre_colc',
-             'fecha_colc',
          ] + list(reserved.values())
 
 t_mais = r'\+'
@@ -61,8 +59,6 @@ t_virgula =r'\,'
 t_ponto = r'\.'
 t_abre_par = r'\('
 t_fecha_par = r'\)'
-t_abre_colc = r'\['
-t_fecha_colc = r'\]'
 t_abre_chaves = r'\{'
 t_fecha_chaves = r'\}'
 t_seta = r'\<\-'
