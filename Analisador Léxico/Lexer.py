@@ -41,6 +41,9 @@ tokens = [
              'seta',
              'ponto',
              'string',
+             'virgula',
+             'comentario_linha',
+             'comentario_bloco',
          ] + list(reserved.values())
 
 t_mais = r'\+'
@@ -52,6 +55,7 @@ t_menor_igual = r'\<\='
 t_menor = r'\<'
 t_dois_pontos = r'\:'
 t_ponto_virgula = r'\;'
+t_virgula =r'\,'
 t_ponto = r'\.'
 t_abre_par = r'\('
 t_fecha_par = r'\)'
@@ -72,6 +76,12 @@ def t_num(t):
     r'\d+'
     t.value = int(t.value)
     return t
+
+def t_comentario_linha(t):
+    r'[--]+([a-zA-Z0-9_]*)'
+    if t.lexer : '\n'
+    t.lexer.skip(1)
+    pass
 
 # numero de linhas
 def t_newline(t):
