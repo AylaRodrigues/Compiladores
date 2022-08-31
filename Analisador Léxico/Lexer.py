@@ -5,7 +5,7 @@ reserved = {
     'else': 'ELSE',
     'if': 'IF',
     'fi':'FI',
-    'false':'fALSE',
+    'false':'FALSE',
     'in':'IN',
     'inherits':'INHERITS',
     'isvoid':'ISVOID',
@@ -19,7 +19,7 @@ reserved = {
     'new':'NEW',
     'of':'OF',
     'not':'NOT',
-    'true':'tRUE'
+    'true':'TRUE'
 }
 
 tokens = [
@@ -44,6 +44,8 @@ tokens = [
              'virgula',
              'comentario_linha',
              'comentario_bloco',
+             'abre_colc',
+             'fecha_colc',
          ] + list(reserved.values())
 
 t_mais = r'\+'
@@ -59,6 +61,8 @@ t_virgula =r'\,'
 t_ponto = r'\.'
 t_abre_par = r'\('
 t_fecha_par = r'\)'
+t_abre_colc = r'\['
+t_fecha_colc = r'\]'
 t_abre_chaves = r'\{'
 t_fecha_chaves = r'\}'
 t_seta = r'\<\-'
@@ -80,6 +84,11 @@ def t_num(t):
 def t_comentario_linha(t):
     r'[--]+([a-zA-Z0-9_]*)'
     if t.lexer : '\n'
+    pass
+
+def t_comentario_bloco(t):
+    r'[(*]+([a-zA-Z0-9_]*)'
+    if t.lexer : '*)'
     pass
 
 # numero de linhas
