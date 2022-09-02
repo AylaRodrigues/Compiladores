@@ -83,8 +83,7 @@ def t_comentario_linha(t):
     pass
 
 def t_comentario_bloco(t):
-    r'[(*]+([a-zA-Z0-9_]*)'
-    if t.lexer : '*)'
+    r'(\(\*(.|\n)*?\*\))'
     pass
 
 # numero de linhas
