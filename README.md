@@ -7,7 +7,7 @@
 >Utilizando a biblioteca PLY
     
 * [Analisador Léxico](https://github.com/AylaRodrigues/Compiladores/tree/main/Analisador%20L%C3%A9xico)
-* [Analisador Sintático]()
+* [Analisador Sintático](https://github.com/AylaRodrigues/Compiladores/tree/main/Analisador%20Sintatico)
 * [Analisador Semântico]()
 
 ![Lexer](https://img.shields.io/badge/Lexer-working-008000?style=for-the-badge&logo=github&logoColor=white)
