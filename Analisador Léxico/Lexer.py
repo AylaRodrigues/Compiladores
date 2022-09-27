@@ -26,29 +26,29 @@ def MyLexer (nomearq):
     }
 
     tokens = [
-             'ID',
-             'num',
-             'mais',
-             'menos',
-             'multi',
-             'dividir',
-             'igual',
-             'menor_igual',
-             'menor',
-             'dois_pontos',
-             'ponto_virgula',
-             'abre_par',
-             'fecha_par',
-             'abre_chaves',
-             'fecha_chaves',
-             'seta',
-             'ponto',
-             'string',
-             'virgula',
-						 'arroba',
-							'til',
-             'comentario_linha',
-             'comentario_bloco',
+            'ID',
+            'num',
+            'mais',
+            'menos',
+            'multi',
+            'dividir',
+            'igual',
+            'menor_igual',
+            'menor',
+            'dois_pontos',
+            'ponto_virgula',
+            'abre_par',
+            'fecha_par',
+            'abre_chaves',
+            'fecha_chaves',
+            'seta',
+            'ponto',
+            'string',
+            'virgula',
+            'arroba',
+            'til',
+            'comentario_linha',
+            'comentario_bloco',
          ] + list(reserved.values())
 
     t_mais = r'\+'
@@ -67,8 +67,8 @@ def MyLexer (nomearq):
     t_abre_chaves = r'\{'
     t_fecha_chaves = r'\}'
     t_seta = r'\<\-'
-		t_arroba= r'\@'
-		t_til = r'\~'
+    t_arroba = r'\@'
+    t_til = r'\~'
 
     def t_string(t):
         r'".*"'
@@ -126,6 +126,6 @@ print(path)
 
 files = (file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
 for file in files:
-    if file.endswith('.cl'): #pra só pegar arquivos certos
+    if file.endswith('.cl'): #pra só pegar arquivos .cl
         print(file)
         MyLexer(file)
