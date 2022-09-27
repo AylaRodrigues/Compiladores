@@ -127,5 +127,5 @@ print(path)
 files = (file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
 for file in files:
     if file.endswith('.cl'): #pra só pegar arquivos .cl
-        print(file)
-        MyLexer(file)
+        print('\n\t'+ file)
+        m = MyLexer(file)
