@@ -14,4 +14,4 @@
 
 ![Lexer](https://img.shields.io/badge/Lexer-working-008000?style=for-the-badge&logo=github&logoColor=white)
 ![Sintatico](https://img.shields.io/badge/Sintatico-working-008000?style=for-the-badge&logo=github&logoColor=white)
-![Semantico](https://img.shields.io/badge/Semantico-building-008000?style=for-the-badge&logo=github&logoColor=white)
+![Semantico](https://img.shields.io/badge/Semantico-building-red?style=for-the-badge&logo=github&logoColor=white)
