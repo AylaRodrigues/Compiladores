@@ -1,58 +1,42 @@
-import ply.yacc as yacc
-from Lexer import MyLexer
-import sys
-import os
+from ply.yacc import yacc
+from Lexer import tokens, lexer, nomearq
 
-
-path = sys.path[0]
-files = (file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
-for file in files:
-    if file.endswith('.cl'):  # pra só pegar arquivos .cl
-        print('\n\t' + file)
-        print(MyLexer(file).tokens)
-
-SE =1
-
-def p_empty(p):
-    'empty : '
-    pass
+SE = 1
 
 def p_program(p):
-    '''program : class_list
-                | empty '''
-    pass
-
-def p_class (p) :
-    '''class : CLASS ID INHERITS ID abre_chaves ft_list fecha_chaves
-               | CLASS ID abre_chaves ft_list fecha_chaves '''
+    'program : class_list'
     pass
 
 def p_class_list(p):
     '''class_list : class_list class ponto_virgula
-                | class ponto_virgula '''
+                    | class ponto_virgula'''
     pass
 
-def p_feature(p):
-    '''feature : ID abre_par formal_list fecha_par dois_pontos ID abre_chaves expr fecha_chaves
-            | ID abre_par fecha_par dois_pontos ID abre_chaves expr fecha_chaves
-            | ID dois_pontos ID seta expr
-            | ID dois_pontos ID
-            | empty '''
+def p_class (p) :
+    '''class : CLASS ID INHERITS ID abre_chaves ft_list fecha_chaves
+               | CLASS ID abre_chaves ft_list fecha_chaves'''
     pass
 
 def p_ft_list(p):
-    '''feature_list : ft_list feature ponto_virgula
-                    | empty '''
+    '''ft_list : ft_list feature ponto_virgula
+                |  empty'''
 
-def p_formal(p):
-    'formal : ID dois_pontos ID'
-    #p[0] = p[1] : p[3]
+def p_feature(p):
+    '''feature : ID abre_par formal_list fecha_par dois_pontos ID abre_chaves expr fecha_chaves
+                | ID abre_par fecha_par dois_pontos ID abre_chaves expr fecha_chaves
+                | ID dois_pontos ID seta expr
+                | ID dois_pontos ID'''
     pass
 
 def p_formal_list(p):
     '''formal_list : formal_list virgula formal
+                    | formal
                     | empty
-                    | formal '''
+                    '''
+    pass
+
+def p_formal(p):
+    'formal : ID dois_pontos ID'
     pass
 
 def p_1_expr(p):
@@ -62,9 +46,9 @@ def p_1_expr(p):
             | expr mais expr
             | expr menos expr
             | expr multi expr
-            | expr divide expr
+            | expr dividir expr
             | til expr
-            | expr menos expr
+            | expr menor expr
             | expr menor_igual expr
             | expr igual expr
             | NOT expr
@@ -79,7 +63,7 @@ def p_1_expr(p):
 def p_expr_list(p):
     '''expr_list : expr_list virgula expr
                 | expr
-                | empty '''
+                |  empty'''
     pass
 
 def p_id_expr(p):
@@ -121,11 +105,11 @@ def p_id_type_list(p):
 def p_id_type(p):
     '''id_type : virgula ID dois_pontos ID seta expr
                     | virgula ID dois_pontos ID
-                    | empty '''
+                    |  empty'''
     pass
 
 def p_2_id_type(p):
-    '2_id_type : ID dois_pontos ID igual_maior expr ponto_virgula'
+    '2_id_type : ID dois_pontos ID menor_igual expr ponto_virgula'
     pass
 
 def p_2_id_type_list(p):
@@ -137,24 +121,23 @@ def p_case_expr(p):
     'expr : CASE expr OF 2_id_type_list ESAC'
     pass
 
+def p_empty(p):
+    'empty : '
+    pass
 
-def p_erro(p):
+def p_error(p):
     if SE:
         if p is not None:
-            print ("Erro sintatico na linha: " + str(lexer.lineno)+"  Erro contextual: " + str(p.value))
+            print("Erro sintatico na linha: " + str(lexer.lineno)+"  Error: " + str(p.value))
         else:
-            print ("Erro lexico na linha: " + str(lexer.lineno))
+            print("Erro lexico na linha: " + str(lexer.lineno))
     else:
         raise Exception('Syntax', 'error')
 
 
-parser = yacc.yacc()
+parser = yacc()
 
-while True:
-   try:
-       s = input('calc > ')
-   except EOFError:
-       break
-   if not s: continue
-   result = parser.parse(s)
-   print(result)
+arq = open(nomearq,'r')
+tokens = arq.read()
+result = parser.parse(tokens, lexer=lexer)
+print(result)
