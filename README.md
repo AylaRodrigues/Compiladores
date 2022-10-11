@@ -13,4 +13,5 @@
 [![Download](https://img.shields.io/badge/Download-008000?style=for-the-badge&logo=download&logoColor=white)](https://github.com/AylaRodrigues/Compiladores/archive/refs/heads/main.zip)
 
 ![Lexer](https://img.shields.io/badge/Lexer-working-008000?style=for-the-badge&logo=github&logoColor=white)
-
+![Sintatico](https://img.shields.io/badge/Sintatico-working-008000?style=for-the-badge&logo=github&logoColor=white)
+![Semantico](https://img.shields.io/badge/Semantico-building-008000?style=for-the-badge&logo=github&logoColor=white)
