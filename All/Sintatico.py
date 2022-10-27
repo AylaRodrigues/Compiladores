@@ -1,5 +1,7 @@
 from ply.yacc import yacc
 from Lexer import tokens, lexer, nomearq
+import sys
+import os
 
 SE = 1
 
@@ -137,7 +139,13 @@ def p_error(p):
 
 parser = yacc()
 
-arq = open(nomearq,'r')
-tokens = arq.read()
-result = parser.parse(tokens, lexer=lexer)
-print(result)
+path = sys.path[0]
+
+files = (file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
+for file in files:
+    if file.endswith('.cl'):
+        print('\n\t' + file)
+        f = open(file,'r')
+        tokens = f.read()
+        aux = parser.parse(tokens, lexer=lexer)
+        print(aux)
