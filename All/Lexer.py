@@ -1,4 +1,5 @@
 import ply.lex as lex
+import sys
 
 reserved = {
     'class': 'CLASS',
@@ -113,12 +114,13 @@ def t_error (t):
 
 lexer = lex.lex()
 
-nomearq: str = input('Digite o nome do arquivo:\n')
-with open(nomearq) as file:
-    data = file.read()
-lexer.input(data)
-while True:
-    tok = lexer.token()
-    if not tok:
-        break  # No more input
+nomearq: str = sys.argv[0]
+if nomearq.endswith('.cl'):
+    with open(nomearq) as file:
+        data = file.read()
+    lexer.input(data)
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break  # No more input
     print(tok)
