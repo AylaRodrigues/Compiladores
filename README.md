@@ -8,7 +8,7 @@
     
 * [Analisador Léxico](https://github.com/AylaRodrigues/Analisador-Lexico)
 * [Analisador Sintático](https://github.com/AylaRodrigues/Analisador-Sintatico)
-* [Analisador Semântico]()
+* [Analisador Semântico](https://github.com/AylaRodrigues/Analisador-Semantico)
 
 [![Download](https://img.shields.io/badge/Download-008000?style=for-the-badge&logo=download&logoColor=white)](https://github.com/AylaRodrigues/Compiladores/archive/refs/heads/main.zip)
 
