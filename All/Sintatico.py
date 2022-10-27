@@ -149,3 +149,4 @@ for file in files:
         tokens = f.read()
         aux = parser.parse(tokens, lexer=lexer)
         print(aux)
+        lexer.lineno=1
