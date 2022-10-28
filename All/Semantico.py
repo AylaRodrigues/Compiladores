@@ -1,18 +1,13 @@
 from Sintatico import parser
 from Lexer import tokens
 
-Classes=[
-
-]
-
-Tipos=[
-
-]
+Class = []
+Type = []
+Env = []
 
 for i in range(len(tokens)):
-    if(tokens[i] in Classes):
-        print('Yes, it is')
-    else:
-        Classes.append(tokens[i])
-        print(Classes)
-
+    if tokens[i] not in Env:
+        Env.append(tuple([tokens[i],5])) #ao inves do 5 seria o numero da ocorrencia/funcao(?)
+        print(Env)
+Env.pop()
+print(Env)
