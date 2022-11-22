@@ -1,13 +1,27 @@
-from Sintatico import parser
-from Lexer import tokens
+from Sintatico import arvore
+import copy
 
-Class = []
-Type = []
-Env = []
+TypeList = [('Object', None, [('abort',[],'Object'),('type_name',[],'String'),('copy',[],'SELF_TYPE')], []),
+        ('SELF_TYPE',None,[],[]),
+        ('IO', 'Object', [('out_string',[('x','String')],'SELF_TYPE'),('out_int',[('x','Int')],'SELF_TYPE'),('in_string',[],'String'),('in_int',[],'Int')], []),
+        ('Int', 'IO', [], []),
+        ('String', 'IO', [('length',[],'Int'),('concat',[('s','String')],'String'),('substr',[('i','Int'), ('l','Int')],'String')], []),
+        ('Bool', 'IO', [], [])]
+MethodsList=[]
+IDsList=[]
 
-for i in range(len(tokens)):
-    if tokens[i] not in Env:
-        Env.append(tuple([tokens[i],5])) #ao inves do 5 seria o numero da ocorrencia/funcao(?)
-        print(Env)
-Env.pop()
-print(Env)
+
+for Type in TypeList:
+    for method in Type[2]:
+        MethodsList.append(method)
+
+for Type in TypeList:
+    for ID in Type[3]:
+        IDsList.append(ID)
+
+def percorrerArv(t):
+    if type(t) == list or type(t) == tuple:
+        for son in t:
+            percorrerArv(son)
+        print(t[0])
+print(arvore)
