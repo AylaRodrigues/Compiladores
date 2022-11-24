@@ -108,7 +108,7 @@ t_ignore = ' \t'
 
 # caracter invalido
 def t_error (t):
-    print("Caracter invalido'%s'" % t.value[0])
+    print("Caracter invalido: '%s'" % t.value[0])
     t.lexer.skip(1)
 
 
