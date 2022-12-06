@@ -45,8 +45,6 @@ tokens = [
              'virgula',
              'arroba',
              'til',
-             'comentario_linha',
-             'comentario_bloco',
          ] + list(reserved.values())
 
 t_mais = r'\+'
@@ -69,58 +67,41 @@ t_arroba = r'\@'
 t_til = r'\~'
 
 
-def t_string (t):
+def t_string(t):
     r'".*"'
     return t
 
 
-def t_ID (t):
+def t_ID(t):
     r'[a-zA-Z_]+([a-zA-Z0-9_]*)'
     t.type = reserved.get(t.value, 'ID')  # Procurando palavras reservadas
     return t
 
 
-def t_num (t):
+def t_num(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
 
-def t_comentario_linha (t):
-    r'[--]+([a-zA-Z0-9_]*)'
+def t_comentario(t):
+    r'(\(\*(.|\n)*?\*\))|(--.*)'
     if t.lexer: '\n'
     pass
 
 
-def t_comentario_bloco (t):
-    r'(\(\*(.|\n)*?\*\))'
-    pass
-
-
 # numero de linhas
-def t_newline (t):
+def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
 
-t_ignore = ' \t'
-
-
 # caracter invalido
-def t_error (t):
-    print("Caracter invalido: '%s'" % t.value[0])
+def t_error(t):
+    print("Caracter invalido'%s'" % t.value[0])
     t.lexer.skip(1)
 
 
-lexer = lex.lex()
+t_ignore = ' \t'
 
-nomearq: str = sys.argv[0]
-if nomearq.endswith('.cl'):
-    with open(nomearq) as file:
-        data = file.read()
-    lexer.input(data)
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-    print(tok)
+lexer = lex.lex()
